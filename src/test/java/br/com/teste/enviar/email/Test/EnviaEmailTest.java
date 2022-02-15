@@ -20,16 +20,52 @@ public class EnviaEmailTest {
     @Test
     public void testeEmail() throws Exception {
 
-        for (int i = 0; i <= 10; i++) {
-            EnviaEmail enviaEmail =
-                    new EnviaEmail("jeanheberth19@gmail.com, jean-hv@hotmail.com, jessicaflorzinha2014@gmail.com",
-                            "Jean - Teste de Envio",
-                            "Testando enviar email",
-                            "Será se essa pouha vai dar certo?");
+        EnviaEmail enviaEmail =
+                new EnviaEmail("jeanheberth19@gmail.com, jean-hv@hotmail.com, jessicaflorzinha2014@gmail.com",
+                        "Jean - Teste de Envio",
+                        "Testando enviar email",
+                        " Testando o envio de email com java ");
 
-            enviaEmail.enviarEmail();
 
-            Thread.sleep(2000);
-        }
+        enviaEmail.enviarEmail(false);
+
+    }
+
+    @Test
+    public void testeEmailComHtml() throws Exception {
+
+        StringBuilder stringBuilderTexotEmail = new StringBuilder();
+        stringBuilderTexotEmail.append("Olá, <br/><br/>");
+        stringBuilderTexotEmail.append("Você está cadastrado no nosso site de cuidador de idosos, <br/><br/>");
+        stringBuilderTexotEmail.append("Para ter acesso clique no botão a baixo, <br/><br/>");
+
+
+        stringBuilderTexotEmail.append("<b>Login:</b> jeanheberth <br/><br/>");
+        stringBuilderTexotEmail.append("<b>Senha:</b> jeanheberth <br/><br/>");
+        stringBuilderTexotEmail.append("<a target=\"_blank\" href=\"www.google.com.br\" " +
+                "style=\"color:#2525a7;" +
+                "padding: 14px 25px;" +
+                "text-align:center;" +
+                "text-decoration: none; " +
+                "display: inline-block;" +
+                "border-radius: 30px;" +
+                "font-size: 20px;" +
+                "font-family:courier;" +
+                "border: 3px solid green;\">" +
+                "Clique aqui</a> <br/><br/>");
+
+
+            stringBuilderTexotEmail.append("<span style=\"font-size:12px;\">" +
+                    "&reg; Ass.: Cuidadores com amor</span>");
+
+        EnviaEmail enviaEmail =
+                new EnviaEmail("jeanheberth19@gmail.com",
+                        "Jean - Teste de Envio",
+                        "Testando enviar email",
+                        stringBuilderTexotEmail.toString());
+
+
+        enviaEmail.enviarEmail(true);
+
     }
 }

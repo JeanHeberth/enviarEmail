@@ -22,7 +22,8 @@ public class EnviaEmail {
         this.textoEmail = textoEmail;
     }
 
-    public void enviarEmail() throws Exception {
+    public void enviarEmail(boolean enviaHTML) throws Exception {
+
 
         Properties properties = new Properties();
 
@@ -49,9 +50,12 @@ public class EnviaEmail {
         message.setFrom(new InternetAddress(userName, nomeRemetente)); /* Endereço de quem está enviando a mensagem */
         message.setRecipients(Message.RecipientType.TO, toUser); /* Email de destino */
         message.setSubject(assuntoEmail); /* Assunto do email */
-        message.setText(textoEmail); /* Corpo do email */
-        Transport.send(message);
 
+        if (enviaHTML) {
+            message.setContent(textoEmail, "text/html; charset=utf-8");
+        } else {
+            message.setText(textoEmail);
+        }
+        Transport.send(message);
     }
 }
-
