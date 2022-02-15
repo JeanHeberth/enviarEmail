@@ -56,7 +56,7 @@ public class EnviaEmailTest {
 
 
             stringBuilderTexotEmail.append("<span style=\"font-size:12px;\">" +
-                    "&reg; Ass.: Cuidadores com amor</span>");
+                    "&copy; Ass.: Cuidadores com amor</span>");
 
         EnviaEmail enviaEmail =
                 new EnviaEmail("jeanheberth19@gmail.com",
