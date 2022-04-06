@@ -55,8 +55,8 @@ public class EnviaEmailTest {
                 "Clique aqui</a> <br/><br/>");
 
 
-            stringBuilderTexotEmail.append("<span style=\"font-size:12px;\">" +
-                    "&copy; Ass.: Cuidadores com amor</span>");
+        stringBuilderTexotEmail.append("<span style=\"font-size:12px;\">" +
+                "&copy; Ass.: Cuidadores com amor</span>");
 
         EnviaEmail enviaEmail =
                 new EnviaEmail("jeanheberth19@gmail.com",
@@ -102,8 +102,11 @@ public class EnviaEmailTest {
                         "Testando enviar email",
                         stringBuilderTexotEmail.toString());
 
-
-        enviaEmail.enviarEmailComPdf(true);
-
+        //Caso queira enviar o email várias vezes para o usuário, apenas descomentar o laço FOR, e colocar o valor de email's desejado.
+        /*     for (int i = 0; i < 75; i++)*/
+        {
+            enviaEmail.enviarEmailComPdf(true);
+        }
     }
+
 }
